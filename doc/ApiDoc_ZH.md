@@ -689,15 +689,11 @@ var_dump($res);
 |              | `port`                |              | string              | 服务实例Port(可选，如果设置了服务实例ID，则这个可不设置，优先使用服务实例ID)，字符串数字："200" |
 |              | `delay`               |              | string              | 设置服务实例调用时延，字符串数字："200"                                                         |
 |              | `locality_aware_info` |              | string              | 设置需要传递的LocalityAware的信息，字符串数字："200"                                            |
-|              | `ignore_half_open`    |              | string              | 设置是否略过跳过半开探测节点, "true" or "false"                                                 |
 |              | `ret_status`          |              | string              | 调用返回状态，error、timeout、ok                                                                |
 |              | `ret_code`            |              | string              | 设置调用返回码。可选，用于支持根据返回码实现自己的插件                                          |
 |              | `subset`              |              | map<string, string> | 设置被调服务subset信息                                                                          |
 |              | `labels`              |              | map<string, string> | 设置被调服务labels信息                                                                          |
-|              | `source`              |              | map<string, string> | 设置源服务信息                                                                                  |
-|              |                       | `namespace`  | string              | 实例的标签信息                                                                                  |
-|              |                       | `service`    | string              | 实例的标签信息                                                                                  |
-|              |                       | `metadata`   | map<string, string> | 实例的标签信息                                                                                  |
+
 
 *函数执行返回*
 
@@ -717,19 +713,10 @@ $polaris_client->InitConsumer();
 $init_service_info = array(
     "namespace" => "default",
     "service" => "php_ext_test",
-    "vpc_id" => "test_vpc",
     "locality_aware_info" => "",
     "ret_status" => "ok",
-    "labels" => array(
-        "user_id" => "uin_001"
-    ),
-    "source" => array(
-        "namespace" => "",
-        "service" => "",
-        "metadata" => array(
-            "env" => "pre"
-        )
-    )
+    "host" => "127.0.0.1",
+    "port" => "8080",
 );
 
 $timeout = 500;
